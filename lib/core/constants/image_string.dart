@@ -1,0 +1,10 @@
+const String logo = 'images/logo.png';
+const String category1 = 'images/sotej_mudiponno.png';
+const String category2 = 'images/natural_mudiponno.png';
+const String category3 = 'images/home_made_mudiponno.png';
+const String headerBodyImage = 'images/header_body_image.png';
+const String logoFooter = 'images/logo_footer.png';
+const String facebook = 'images/social/facebook.png';
+const String instagram = 'images/social/instagram.png';
+const String linkedin = 'images/social/linkedIn.png';
+const String twitter = 'images/social/twitter.png';

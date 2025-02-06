@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "101683233028",
+    "project_id": "cookants-bd",
+    "storage_bucket": "cookants-bd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101683233028:android:f36d2926d371d081a61051",
+        "android_client_info": {
+          "package_name": "com.example.cookants"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOts5Xp7xC0CAnFcOGl3MXBo2B-4zTuUc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
