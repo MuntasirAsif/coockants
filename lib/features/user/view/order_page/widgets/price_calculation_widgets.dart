@@ -411,7 +411,7 @@ class _PriceCalculationWidgetState extends State<PriceCalculationWidget> {
                 items: selectedItem,
                 orderStatus: 'pending',
               );
-              orderController.addOrder(order);
+              orderController.addOrder(order,context);
             },
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 16.0),

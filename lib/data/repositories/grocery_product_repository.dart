@@ -10,7 +10,8 @@ class GroceryProductRepository {
       final response = await http.get(Uri.parse(productApi));
 
       if (response.statusCode == 200) {
-        List<dynamic> data = jsonDecode(response.body);
+        String decodedResponse = utf8.decode(response.bodyBytes); // ✅ UTF-8 Decoding
+        List<dynamic> data = jsonDecode(decodedResponse);
         return data.map((json) => GroceryProductModel.fromJson(json)).toList();
       } else {
         throw Exception('Failed to load products');
@@ -19,13 +20,15 @@ class GroceryProductRepository {
       throw Exception('Error fetching products: $e');
     }
   }
+
+  // Fetch a product by ID
   Future<GroceryProductModel> getProductById(int productId) async {
     print('$productApi$productId/');
     final response = await http.get(Uri.parse('$productApi$productId/?format=json'));
 
     if (response.statusCode == 200) {
-      // Parse response to GroceryProductModel
-      return GroceryProductModel.fromJson(jsonDecode(response.body));
+      String decodedResponse = utf8.decode(response.bodyBytes); // ✅ UTF-8 Decoding
+      return GroceryProductModel.fromJson(jsonDecode(decodedResponse));
     } else {
       throw Exception('Failed to load product');
     }
@@ -36,7 +39,7 @@ class GroceryProductRepository {
     try {
       final response = await http.post(
         Uri.parse(productApi),
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json; charset=UTF-8'}, // ✅ Ensure UTF-8 Encoding
         body: jsonEncode(product.toJson()),
       );
 
@@ -50,12 +53,12 @@ class GroceryProductRepository {
 
   // Update a product
   Future<void> updateProduct(int productId, GroceryProductModel product) async {
-    print('ok');
+    print('Updating product...');
     try {
       print('$productApi$productId/');
       final response = await http.put(
         Uri.parse('$productApi$productId/'),
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json; charset=UTF-8'}, // ✅ Ensure UTF-8 Encoding
         body: jsonEncode(product.toJson()),
       );
 

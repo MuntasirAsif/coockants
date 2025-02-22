@@ -46,7 +46,7 @@ class _OrderPageBodyState extends State<OrderPageBody> {
 
 
     // Sorting products: selected category first
-    if(category=='all'){
+    if(category=='popular'){
       return allProducts;// Prevents null return
     }else{
       allProducts.sort((a, b) {
@@ -70,11 +70,11 @@ class _OrderPageBodyState extends State<OrderPageBody> {
     return Column(
       children: [
         Gap(20),
-        const Text(
+        const SelectableText(
           'আপনার পন্য সিলেক্ট করুন',
           style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
         ),
-        const Text(
+        const SelectableText(
           'আমরা আপনার অবস্থানের কাছাকাছি সেরা মানের এবং সতেজ\nজিনিসপত্র সরবরাহ করি',
           style: TextStyle(
             fontSize: 18,

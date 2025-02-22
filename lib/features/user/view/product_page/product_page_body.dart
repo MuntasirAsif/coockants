@@ -2,7 +2,6 @@ import 'package:cookants/core/widgets/button_widgets.dart';
 import 'package:cookants/data/models/grocery_product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../core/constants/color.dart';
 
 class ProductPageBody extends StatelessWidget {
@@ -75,7 +74,7 @@ class ProductPageBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        SelectableText(
           productModel.productName,
           style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
@@ -84,11 +83,11 @@ class ProductPageBody extends StatelessWidget {
           spacing: 8,
           children: [
             Chip(
-              label: Text(productModel.productCategory),
+              label: SelectableText(productModel.productCategory),
               backgroundColor: loginButtonColor.withOpacity(.7),
             ),
             Chip(
-              label: Text(productModel.productUnit),
+              label: SelectableText(productModel.productUnit),
               backgroundColor: loginButtonColor.withOpacity(.4),
             ),
           ],
@@ -98,7 +97,7 @@ class ProductPageBody extends StatelessWidget {
   }
 
   Widget _buildDescription() {
-    return Text(
+    return SelectableText(
       productModel.productDescription ?? 'No description available.',
       style: const TextStyle(fontSize: 16, color: Colors.black54),
     );
@@ -107,13 +106,13 @@ class ProductPageBody extends StatelessWidget {
   Widget _buildPriceSection() {
     return Row(
       children: [
-        Text(
-          productModel.productCurrentPrice.toStringAsFixed(2),
+        SelectableText(
+          '${productModel.productCurrentPrice.toStringAsFixed(2)} TK',
           style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.red),
         ),
         const SizedBox(width: 10),
         if (productModel.productOriginalPrice != null && productModel.productOriginalPrice! > 0)
-          Text(
+          SelectableText(
             productModel.productOriginalPrice!.toStringAsFixed(2),
             style: const TextStyle(
               fontSize: 18,

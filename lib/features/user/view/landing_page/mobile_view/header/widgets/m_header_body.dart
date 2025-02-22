@@ -14,14 +14,15 @@ class MHeaderBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Gap(30),
-        Text(
-          title,
-          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+        SelectableText(
+          titlePart1,
+          style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
         ),
-        Text(
+        SelectableText(
           subtitle,
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
         ),
+        Gap(5),
         HeaderCategoryCard(
             categoryName: 'সতেজ মুদিপন্য', storeNumber: '২০', image: category1),
         HeaderCategoryCard(

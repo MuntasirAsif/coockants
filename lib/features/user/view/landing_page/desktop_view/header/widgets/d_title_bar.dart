@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../../../core/constants/color.dart';
@@ -21,7 +22,11 @@ class DTitleBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image.asset(logo,height: deviceHeight*0.15,width: deviceWidth*0.15,fit: BoxFit.fitWidth,),
+        InkWell(
+            onTap: (){
+              context.go('/');
+            },
+            child: Image.asset(logo,height: deviceHeight*0.15,width: deviceWidth*0.15,fit: BoxFit.fitWidth,)),
         SizedBox(
           width: deviceWidth*0.3,
           child: TextField(

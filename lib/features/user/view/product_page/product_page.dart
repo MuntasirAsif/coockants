@@ -2,6 +2,8 @@ import 'package:cookants/data/controller/grocery_product_controller.dart';
 import 'package:cookants/data/models/grocery_product_model.dart';
 import 'package:cookants/features/user/view/product_page/product_page_body.dart';
 import 'package:flutter/material.dart';
+import 'package:seo/head_tag.dart';
+import 'package:seo/html/seo_widget.dart';
 import '../../../../core/constants/color.dart';
 import '../../../../data/repositories/grocery_product_repository.dart';
 import '../landing_page/desktop_view/footer/d_footer_widgets.dart';
@@ -11,7 +13,7 @@ import '../landing_page/mobile_view/header/widgets/m_title_bar.dart';
 
 class ProductPage extends StatefulWidget {
   final String productId;
-  const ProductPage({super.key, required this.productId});
+  const ProductPage({super.key, required this.productId, required String productCategory, required String productName});
 
   @override
   State<ProductPage> createState() => _ProductPageState();
@@ -49,15 +51,21 @@ class _ProductPageState extends State<ProductPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth > 700) {
-            return SingleChildScrollView(child: desktopView(context));
-          } else {
-            return SingleChildScrollView(child: mobileView(context));
-          }
-        },
+    return Seo.head(
+      tags: [
+        MetaTag(name: 'Cookants - ${product?.productName}', content: product?.productDescription),
+        LinkTag(rel: product?.productName, href: 'https://www.cookantsfresh.com/product/${product?.productCategory}/${product?.productName}~${product?.productId}'),
+      ],
+      child: Scaffold(
+        body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            if (constraints.maxWidth > 700) {
+              return SingleChildScrollView(child: desktopView(context));
+            } else {
+              return SingleChildScrollView(child: mobileView(context));
+            }
+          },
+        ),
       ),
     );
   }

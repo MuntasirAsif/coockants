@@ -38,12 +38,16 @@ class AppRouteConfig {
           },
           ),
       GoRoute(
-        path: '/product/:id',  // :id is a dynamic segment
+        path: '/product/:category/:name~:id',
         builder: (context, state) {
-          final String productId = state.pathParameters['id']!;  // Access the parameter
-          return ProductPage(productId: productId);
+          final String productName = state.pathParameters['name']!;
+          final String productCategory = state.pathParameters['category']!;
+          final String productId = state.pathParameters['id']!;
+
+          return ProductPage(productCategory: productCategory, productName: productName, productId: productId);
         },
       )
+
     ],
   );
 }

@@ -1,12 +1,15 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class HorizontalScrollController {
   final ScrollController scrollController = ScrollController();
 
   void scrollLeft() {
-    if (scrollController.hasClients) {
+    if (scrollController.hasClients && scrollController.positions.isNotEmpty) {
+      final double currentPosition = scrollController.position.pixels;
+      final double targetPosition = currentPosition - 250; // Adjust scroll amount as needed
+
       scrollController.animateTo(
-        scrollController.offset - 200, // Adjust scroll amount as needed
+        targetPosition,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
@@ -14,9 +17,12 @@ class HorizontalScrollController {
   }
 
   void scrollRight() {
-    if (scrollController.hasClients) {
+    if (scrollController.hasClients && scrollController.positions.isNotEmpty) {
+      final double currentPosition = scrollController.position.pixels;
+      final double targetPosition = currentPosition + 250; // Adjust scroll amount as needed
+
       scrollController.animateTo(
-        scrollController.offset + 200, // Adjust scroll amount as needed
+        targetPosition,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../models/order_model.dart';
 import '../repositories/order_repositroy.dart';
@@ -25,9 +26,9 @@ class OrderController extends GetxController {
     }
   }
 
-  Future<void> addOrder(Order order) async {
+  Future<void> addOrder(Order order,BuildContext context) async {
     try {
-      await repository.createOrder(order);
+      await repository.createOrder(order,context);
       fetchOrders();
     } catch (e) {
       Get.snackbar('Error', 'Failed to add order: $e');
@@ -43,9 +44,9 @@ class OrderController extends GetxController {
     }
   }
 
-  Future<void> deleteOrder(int id) async {
+  Future<void> deleteOrder(int id,BuildContext context) async {
     try {
-      await repository.deleteOrder(id);
+      await repository.deleteOrder(id,context);
       fetchOrders();
     } catch (e) {
       Get.snackbar('Error', 'Failed to delete order: $e');

@@ -1,5 +1,8 @@
 name: cookants
-description: "Cookants is a modern and user-friendly online grocery shopping platform designed to cater to the needs of customers and administrators alike. Built as a web-based solution, Cookants provides a seamless shopping experience for customers while enabling business owners to efficiently manage products, orders, and inventory through an intuitive admin panel."
+description: "আমরা আপনার দোরগোড়ায় সম্পূর্ণ তাজা ও অর্গানিক গ্রোসারি সরবরাহে প্রতিশ্রুতিবদ্ধ। 
+আমাদের পণ্যের তালিকায় রয়েছে বিশুদ্ধ ও সতেজ ফলমূল, নদীর তাজা মাছ, ফার্ম ফ্রেশ মাংস এবং সম্পূর্ণ ঘরোয়া উপায়ে তৈরি স্বাদ অনুযায়ী
+কাস্টমাইজড টক-ঝাল-মিষ্টি আমসত্ত্ব ও আঁচার। গুণগত মান নিশ্চিত করাকে সর্বোচ্চ অগ্রাধিকার দিয়ে COOKANTS FRESH 
+প্রতিটি পণ্য যত্নসহকারে বাছাই করে, যাতে গ্রাহকের হাতে পৌঁছানোর আগেই তা সতেজ ও স্বাস্থ্যসম্মত থাকে।"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -46,6 +49,8 @@ dependencies:
   go_router: ^14.7.2
   dynamic_path_url_strategy: ^1.0.0
   firebase_auth: ^5.4.1
+  carousel_slider: ^5.0.0
+  seo: ^0.0.10
 
 
 dev_dependencies:
@@ -74,6 +79,8 @@ flutter:
   assets:
     - assets/images/
     - assets/images/social/
+    - assets/images/reviews/
+    - assets/images/product/
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

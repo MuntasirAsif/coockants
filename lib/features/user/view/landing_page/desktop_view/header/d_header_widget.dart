@@ -14,33 +14,37 @@ class DHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
     double deviceHeight = MediaQuery.of(context).size.height;
-    return Stack(
-      children: [
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: deviceWidth*0.03),
-          decoration: BoxDecoration(
-            color: headerBgColor,
-              borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30))
+    return SizedBox(
+      height: 650,
+      child: Stack(
+        children: [
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: SizedBox(
+              height: deviceHeight,
+              child: Image.asset(
+                headerBodyImage,
+                fit: BoxFit.fill,
+              ),
+            ),
           ),
-          child: Column(
-            mainAxisAlignment:MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              DTitleBar(deviceHeight: deviceHeight, deviceWidth: deviceWidth),
-              const DHeaderBody(),
-            ],
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: deviceWidth*0.03),
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30))
+            ),
+            child: Column(
+              mainAxisAlignment:MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                DTitleBar(deviceHeight: deviceHeight, deviceWidth: deviceWidth),
+                const DHeaderBody(),
+              ],
+            ),
           ),
-        ),
-        Positioned(
-          bottom: 0,
-          right: deviceWidth*0.1,
-          child: Image.asset(
-            headerBodyImage,
-            height: deviceHeight*0.45,
-            fit: BoxFit.cover,
-          ),
-        )
-      ],
+        ],
+      ),
     );
   }
 }

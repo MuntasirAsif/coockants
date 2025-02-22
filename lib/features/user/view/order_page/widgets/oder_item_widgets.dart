@@ -29,47 +29,7 @@ class _OderItemWidgetsState extends State<OderItemWidgets> {
       GroceryProductRepository();
   double quantity = 0; // Initial quantity
   late double pricePerKg; // Price per unit (or per kg)
-  String convertNumber(double bnPrice) {
-    String enPrice = '';
-    for (int i = 0; i < bnPrice; i++) {
-      switch (bnPrice) {
-        case '১':
-          enPrice = '${enPrice}1';
-          break;
-        case '২':
-          enPrice = '${enPrice}2';
-          break;
-        case '৩':
-          enPrice = '${enPrice}3';
-          break;
-        case '৪':
-          enPrice = '${enPrice}4';
-          break;
-        case '৫':
-          enPrice = '${enPrice}5';
-          break;
-        case '৬':
-          enPrice = '${enPrice}6';
-          break;
-        case '৭':
-          enPrice = '${enPrice}7';
-          break;
-        case '৮':
-          enPrice = '${enPrice}8';
-          break;
-        case '৯':
-          enPrice = '${enPrice}9';
-          break;
-        case '.':
-          enPrice = '${enPrice}.';
-          break;
-        default:
-          enPrice = '${enPrice}0';
-      }
-      ;
-    }
-    return enPrice;
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -82,10 +42,16 @@ class _OderItemWidgetsState extends State<OderItemWidgets> {
                 MaterialPageRoute(
                     builder: (context) => EditProductScreen(
                         productId: widget.productModel.productId)))
-            : context.go('/product/${widget.productModel.productId}');
+            : context.go(
+            '/product/'
+                '${widget.productModel.productCategory.replaceAll(' ', '-')}/'
+                '${widget.productModel.productName.replaceAll(' ', '-')}'  // Replace spaces with dashes
+                '~'
+                '${widget.productModel.productId}'
+        );;
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
         decoration: BoxDecoration(
           color: const Color(0xFFF4E6E6), // Background color
           borderRadius: BorderRadius.circular(12),
@@ -99,7 +65,7 @@ class _OderItemWidgetsState extends State<OderItemWidgets> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  baseApi +
+                  baseApi.substring(0,29) +
                       widget.productModel
                           .productImage, // Replace with your image URL
                   fit: BoxFit.fitHeight,
@@ -131,7 +97,7 @@ class _OderItemWidgetsState extends State<OderItemWidgets> {
                             groceryProductRepository
                                 .deleteProduct(widget.productModel.productId);
                           },
-                          child: const Icon(Icons.delete)):SizedBox()
+                          child: const Icon(Icons.delete)):const SizedBox()
                     ],
                   ),
                   Text(
@@ -144,7 +110,7 @@ class _OderItemWidgetsState extends State<OderItemWidgets> {
                   ),
                   // Price
                   widget.isAdmin
-                      ? SizedBox()
+                      ? const SizedBox()
                       : Text(
                           "${pricePerKg * quantity}৳", // Total price
                           style: const TextStyle(

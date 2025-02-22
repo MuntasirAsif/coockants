@@ -35,8 +35,22 @@ class _AdminOrderPageBodyState extends State<AdminOrderPageBody> {
       setState(() {
         orders = orderController.orders.value;
         filteredOrders = orders; // Initialize with all orders
+        setList(selectedListIndex);
       });
     });
+  }
+  void setList(int index){
+    selectedListIndex = index;
+
+    if (index == 1) {
+      // "All" tab
+      filteredOrders = orders;
+    } else {
+      String status = tabBarList[index].toLowerCase();
+      filteredOrders = orders
+          .where((order) => order.orderStatus.toLowerCase() == status)
+          .toList();
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -93,17 +107,7 @@ class _AdminOrderPageBodyState extends State<AdminOrderPageBody> {
                 child: InkWell(
                   onTap: () {
                     setState(() {
-                      selectedListIndex = index;
-
-                      if (index == 1) {
-                        // "All" tab
-                        filteredOrders = orders;
-                      } else {
-                        String status = tabBarList[index].toLowerCase();
-                        filteredOrders = orders
-                            .where((order) => order.orderStatus.toLowerCase() == status)
-                            .toList();
-                      }
+                      setList(index);
                     });
                   },
                   child: Text(

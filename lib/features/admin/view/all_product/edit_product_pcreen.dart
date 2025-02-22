@@ -92,7 +92,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
     }
 
     try {
-      final uri = Uri.parse('http://127.0.0.1:8000/products/$productId/');
+      final uri = Uri.parse('https://api.cookantsfresh.com/products/$productId/');
       var request = http.MultipartRequest('PUT', uri);
 
       // Adding fields to the request

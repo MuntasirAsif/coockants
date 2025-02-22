@@ -154,7 +154,7 @@ class _OrderCardState extends State<OrderCard> {
                                       final price = productEntry.price;
                                       final quantity = productEntry.quantity;
                                       final total = price * quantity;
-                                      final imageUrl = baseApi+productEntry.imageUrl;
+                                      final imageUrl = baseApi.substring(0,baseApi.length-1)+productEntry.imageUrl;
 
                                       return DataRow(cells: [
                                         DataCell(Row(
@@ -280,9 +280,11 @@ class _OrderCardState extends State<OrderCard> {
                   Gap(20),
                   InkWell(
                     onTap: (){
-                      OrderController orderController = OrderController();
-                      int? id = widget.order.orderId;
-                      orderController.deleteOrder(id!);
+                      setState(() {
+                        OrderController orderController = OrderController();
+                        int? id = widget.order.orderId;
+                        orderController.deleteOrder(id!,context);
+                      });
                     },
                     child: Container(
                       padding:

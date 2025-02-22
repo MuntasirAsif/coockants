@@ -77,7 +77,7 @@ class _UploadProductScreenState extends State<UploadProductScreen> {
       _isUploading = true;
     });
 
-    final uri = Uri.parse('http://127.0.0.1:8000/upload/');
+    final uri = Uri.parse('https://api.cookantsfresh.com/upload/');
 
     // Retrieve CSRF token
 

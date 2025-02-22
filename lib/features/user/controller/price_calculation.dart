@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
-
 import '../../../data/models/order_item_model.dart';
 
 
